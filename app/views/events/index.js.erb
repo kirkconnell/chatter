@@ -1,0 +1,17 @@
+<% if @messages.present? %>
+  var messageHtml = "";
+<% end %>
+<% if @users.present? %>
+  var userHtml = "";
+<% end %>
+<% @messages.each do |message| %>
+  <%= render :partial => "messages/add_message", :locals => { :message => message} %>
+<% end %>
+<% @users.each do |user| %>
+  userHtml = "<%= escape_javascript(render(user)) %>";
+  $('#users').append(userHtml);
+  $('#user_<%= user.id %>').effect("highlight", {}, 2000);
+<% end %>
+<% @disconnects.each do |disco| %>
+  $('#user_<%= disco.user.id %>').fadeOut();
+<% end %>

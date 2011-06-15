@@ -1,0 +1,13 @@
+#main
+  %h1= @room.name
+  #sidebar
+    %ul#users
+      = render @room.users
+  #messages
+    = render @room.messages
+
+  = form_for [@room, @room.messages.build], :remote => true do |f|
+    = f.text_area :content, :rows => 4
+    = f.submit "Send"
+
+  = link_to 'Back', rooms_path

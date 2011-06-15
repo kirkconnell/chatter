@@ -1,0 +1,6 @@
+if ($('#message_<%= message.id %>').length == 0){
+  messageHtml = "<%= escape_javascript(render(message)) %>";
+  $('#messages').append(messageHtml);
+  $('#message_<%= message.id %>').effect("highlight", {}, 2000);
+  $('form.new_message textarea').val("");
+}
